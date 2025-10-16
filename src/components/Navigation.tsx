@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Swords, FlaskConical, Timer, TrendingUp, User, PawPrint, Menu } from "lucide-react";
+import { Swords, FlaskConical, Timer, TrendingUp, User, PawPrint, Zap, Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
@@ -33,6 +33,11 @@ const Navigation = () => {
       path: "/level-calculator",
       label: "Level Progression",
       icon: TrendingUp,
+    },
+    {
+      path: "/exp-per-stam",
+      label: "EXP per Stam",
+      icon: Zap,
     },
   ];
 
