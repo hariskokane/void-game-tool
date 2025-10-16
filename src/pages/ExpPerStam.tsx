@@ -17,9 +17,9 @@ const ExpPerStam = () => {
     const lvl = parseFloat(level);
 
     if (!isNaN(lvl) && lvl > 1) {
-      // Formula: [0.2 × (x + 1) × 2.5]² + 100 / [5 × (x - 1) + 20]
+      // Corrected Formula: ([0.2 × (x + 1) × 2.5]² + 100) / (x + 3)
       const numerator = Math.pow(0.2 * (lvl + 1) * 2.5, 2) + 100;
-      const denominator = 5 * (lvl - 1) + 20;
+      const denominator = lvl + 3;
       const expPerStam = numerator / denominator;
       
       setResult(expPerStam);
@@ -77,7 +77,7 @@ const ExpPerStam = () => {
 
               <div className="flex items-center gap-2 text-sm text-muted-foreground bg-muted/30 p-3 rounded-lg">
                 <Sparkles className="w-4 h-4" />
-                <span>Formula: [0.2 × (level + 1) × 2.5]² + 100 / [5 × (level - 1) + 20]</span>
+                <span>Formula: ([0.2 × (level + 1) × 2.5]² + 100) / (level + 3)</span>
               </div>
             </div>
           </GlassCard>
