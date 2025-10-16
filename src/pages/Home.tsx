@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { FlaskConical, Swords, Timer, ChevronRight, TrendingUp, User, PawPrint } from "lucide-react";
+import { FlaskConical, Swords, Timer, ChevronRight, TrendingUp, User, PawPrint, Zap } from "lucide-react";
 import Navigation from "@/components/Navigation";
 
 const Home = () => {
@@ -39,6 +39,15 @@ const Home = () => {
       path: "/level-calculator",
       color: "from-blue-500 to-cyan-500",
       glow: "shadow-blue-500/50"
+    },
+    {
+      id: "exp",
+      title: "EXP per Stamina",
+      description: "Calculate experience points gained per stamina point based on your level.",
+      icon: <Zap className="w-8 h-8" />,
+      path: "/exp-per-stam",
+      color: "from-yellow-500 to-amber-600",
+      glow: "shadow-yellow-500/50"
     }
   ];
 
@@ -163,6 +172,9 @@ const Home = () => {
               </Link>
               <Link to="/level-calculator" className="text-muted-foreground hover:text-foreground transition-colors">
                 Level Progression
+              </Link>
+              <Link to="/exp-per-stam" className="text-muted-foreground hover:text-foreground transition-colors">
+                EXP per Stamina
               </Link>
             </div>
             
