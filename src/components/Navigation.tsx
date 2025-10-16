@@ -46,16 +46,18 @@ const Navigation = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full flex items-center justify-center">
+            {/* Make the logo link to home */}
+            <Link to="/" className="w-8 h-8 rounded-full flex items-center justify-center">
               <img 
                 src="/void2.png" 
                 alt="VOID Game Tools" 
                 className="w-full h-full object-contain rounded-full"
               />
-            </div>
-            <h1 className="text-xl font-orbitron font-bold tracking-wider">
+            </Link>
+            {/* Make the text link to home */}
+            <Link to="/" className="text-xl font-orbitron font-bold tracking-wider">
               VOID <span className="text-primary">TOOLS</span>
-            </h1>
+            </Link>
           </div>
 
           {/* Mobile menu button */}
