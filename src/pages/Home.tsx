@@ -75,11 +75,13 @@ const Home = () => {
           <h1 className="text-5xl md:text-6xl font-orbitron font-bold bg-gradient-to-r from-violet-400 via-purple-500 to-fuchsia-600 bg-clip-text text-transparent">
             VOID Game Tools
           </h1>
-          <img 
-            src="/void2.png" 
-            alt="VOID Game Tools" 
-            className="w-64 h-64 mx-auto object-contain rounded-2xl"
-          />
+          <div className="flex justify-center">
+            <img 
+              src="/void2.png" 
+              alt="VOID Game Tools" 
+              className="w-64 h-64 object-contain rounded-2xl border-4 border-primary/30 shadow-2xl shadow-primary/20"
+            />
+          </div>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto pt-4">
             Plan your raid strategy with our suite of calculators including Damage per FSP, FSP Needed, Stamina Regen, and Level Progression tools. Each tool provides fast, accurate calculations based on in-game formulas with no critical hits considered, pure stats only.
           </p>
