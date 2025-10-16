@@ -1,10 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { Swords, FlaskConical, Timer, TrendingUp, User, PawPrint } from "lucide-react";
+import { Swords, FlaskConical, Timer, TrendingUp, User, PawPrint, Menu } from "lucide-react";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 const Navigation = () => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navItems = [
     {
@@ -51,7 +53,19 @@ const Navigation = () => {
             </h1>
           </div>
 
-          <div className="flex gap-2">
+          {/* Mobile menu button */}
+          <div className="sm:hidden flex items-center gap-2">
+            <ThemeToggle />
+            <button 
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="p-2 rounded-lg bg-secondary hover:bg-secondary/80 transition-colors"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Desktop navigation */}
+          <div className="hidden sm:flex gap-2">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = location.pathname === item.path;
@@ -71,7 +85,7 @@ const Navigation = () => {
                     isActive ? "text-primary" : "text-muted-foreground"
                   )} />
                   <span className={cn(
-                    "font-medium text-sm hidden sm:inline",
+                    "font-medium text-sm",
                     isActive ? "text-foreground" : "text-muted-foreground"
                   )}>
                     {item.label}
@@ -84,6 +98,42 @@ const Navigation = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile navigation menu */}
+      {isMenuOpen && (
+        <div className="sm:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border py-2">
+          <div className="container mx-auto px-4 flex flex-col gap-1">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = location.pathname === item.path;
+              
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn(
+                    "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-300",
+                    "hover:bg-secondary hover:shadow-glow-sm",
+                    isActive && "bg-secondary shadow-glow-sm border border-primary/30"
+                  )}
+                >
+                  <Icon className={cn(
+                    "w-5 h-5 transition-colors",
+                    isActive ? "text-primary" : "text-muted-foreground"
+                  )} />
+                  <span className={cn(
+                    "font-medium",
+                    isActive ? "text-foreground" : "text-muted-foreground"
+                  )}>
+                    {item.label}
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
