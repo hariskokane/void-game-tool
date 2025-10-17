@@ -25,10 +25,10 @@ const FspDamage = () => {
   };
 
   const formatNumber = (num: number) => {
-    if (num >= 1e9) return `${(num / 1e9).toFixed(2)}B`;
-    if (num >= 1e6) return `${(num / 1e6).toFixed(2)}M`;
-    if (num >= 1e3) return `${(num / 1e3).toFixed(2)}K`;
-    return num.toFixed(0);
+    if (num >= 1e9) return `${(num / 1e9).toFixed(4)}B`;
+    if (num >= 1e6) return `${(num / 1e6).toFixed(4)}M`;
+    if (num >= 1e3) return `${(num / 1e3).toFixed(4)}K`;
+    return num.toFixed(4);
   };
 
   return (
@@ -93,7 +93,7 @@ const FspDamage = () => {
             <ResultCard
               title="Total Damage per FSP"
               value={formatNumber(result)}
-              subtitle={`${result.toLocaleString()} damage points`}
+              subtitle={`${result.toFixed(4)} damage points`}
               icon={<Swords className="w-8 h-8" style={{ color: THEME_COLOR }} />}
               glowColor={THEME_COLOR}
             />
