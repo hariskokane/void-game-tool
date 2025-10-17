@@ -84,13 +84,61 @@ const ExpPerStam = () => {
 
           {/* Result */}
           {result !== null && (
-            <ResultCard
-              title="EXP per Stamina"
-              value={formatNumber(result)}
-              subtitle={`${result.toFixed(2)} experience points per stamina`}
-              icon={<Zap className="w-8 h-8" style={{ color: THEME_COLOR }} />}
-              glowColor={THEME_COLOR}
-            />
+            <div className="space-y-6">
+              <ResultCard
+                title="EXP per Stamina"
+                value={formatNumber(result)}
+                subtitle={`${result.toFixed(2)} experience points per stamina`}
+                icon={<Zap className="w-8 h-8" style={{ color: THEME_COLOR }} />}
+                glowColor={THEME_COLOR}
+              />
+              
+              {/* EXP for Multiple Slashes */}
+              <GlassCard glowColor={THEME_COLOR} className="animate-in fade-in slide-in-from-bottom duration-700 delay-300">
+                <div className="space-y-4">
+                  <h3 className="text-xl font-orbitron font-semibold text-yellow-500 text-center">
+                    EXP per Slash Count
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div className="text-center p-3 bg-secondary/30 rounded-lg border border-yellow-500/20">
+                      <div className="text-lg font-orbitron font-semibold text-yellow-500">
+                        {formatNumber(result * 10)}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        10 Slashes
+                      </div>
+                    </div>
+                    <div className="text-center p-3 bg-secondary/30 rounded-lg border border-yellow-500/20">
+                      <div className="text-lg font-orbitron font-semibold text-yellow-500">
+                        {formatNumber(result * 50)}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        50 Slashes
+                      </div>
+                    </div>
+                    <div className="text-center p-3 bg-secondary/30 rounded-lg border border-yellow-500/20">
+                      <div className="text-lg font-orbitron font-semibold text-yellow-500">
+                        {formatNumber(result * 100)}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        100 Slashes
+                      </div>
+                    </div>
+                    <div className="text-center p-3 bg-secondary/30 rounded-lg border border-yellow-500/20">
+                      <div className="text-lg font-orbitron font-semibold text-yellow-500">
+                        {formatNumber(result * 200)}
+                      </div>
+                      <div className="text-xs text-muted-foreground mt-1">
+                        200 Slashes
+                      </div>
+                    </div>
+                  </div>
+                  <div className="text-xs text-muted-foreground text-center">
+                    Total EXP gained for different numbers of stamina slashes
+                  </div>
+                </div>
+              </GlassCard>
+            </div>
           )}
         </div>
       </main>
