@@ -23,17 +23,22 @@ const ExpPerStam = () => {
       const denominator = 5 * (lvl - 1) + 20;
       const expPerStam = numerator / denominator;
       
-      setResult(expPerStam);
+      // Round to nearest whole number
+      setResult(Math.round(expPerStam));
     } else {
       setResult(null);
     }
   };
 
+  // Modified to display whole numbers
   const formatNumber = (num: number) => {
-    if (num >= 1e9) return `${(num / 1e9).toFixed(2)}B`;
-    if (num >= 1e6) return `${(num / 1e6).toFixed(2)}M`;
-    if (num >= 1e3) return `${(num / 1e3).toFixed(2)}K`;
-    return num.toFixed(2);
+    // First round the number to handle any floating point issues
+    const roundedNum = Math.round(num);
+    
+    if (roundedNum >= 1e9) return `${(roundedNum / 1e9).toFixed(2)}B`;
+    if (roundedNum >= 1e6) return `${(roundedNum / 1e6).toFixed(2)}M`;
+    if (roundedNum >= 1e3) return `${(roundedNum / 1e3).toFixed(2)}K`;
+    return roundedNum.toString(); // Return as whole number string
   };
 
   return (
@@ -92,7 +97,7 @@ const ExpPerStam = () => {
               <ResultCard
                 title="EXP per Stamina"
                 value={formatNumber(result)}
-                subtitle={`${result.toFixed(2)} experience points per stamina`}
+                subtitle={`${result} experience points per stamina`}
                 icon={<Zap className="w-8 h-8" style={{ color: THEME_COLOR }} />}
                 glowColor={THEME_COLOR}
               />
