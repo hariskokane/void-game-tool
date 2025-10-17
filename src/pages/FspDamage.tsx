@@ -25,10 +25,16 @@ const FspDamage = () => {
   };
 
   const formatNumber = (num: number) => {
-    if (num >= 1e9) return `${(num / 1e9).toFixed(4)}B`;
-    if (num >= 1e6) return `${(num / 1e6).toFixed(4)}M`;
-    if (num >= 1e3) return `${(num / 1e3).toFixed(4)}K`;
-    return num.toFixed(4);
+    if (num >= 1e6) {
+      // For numbers >= 1,000,000, show full number with commas
+      return new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(num);
+    }
+    if (num >= 1e3) {
+      // For numbers >= 1,000 but < 1,000,000, show with K and 2 decimal places
+      return `${(num / 1e3).toFixed(2)}K`;
+    }
+    // For numbers < 1,000, show with 2 decimal places
+    return num.toFixed(2);
   };
 
   return (
