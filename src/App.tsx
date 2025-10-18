@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { Analytics } from "@vercel/analytics/react";
+import { inject } from "@vercel/analytics";
 import FspDamage from "@/pages/FspDamage";
 import FspNeeded from "@/pages/FspNeeded";
 import StaminaRegen from "@/pages/StaminaRegen";
@@ -19,6 +19,11 @@ import ExpToLevelCalculator from "@/pages/ExpToLevelCalculator";
 import FoodToLevelCalculator from "@/pages/FoodToLevelCalculator";
 import DamageExpCalculator from "@/pages/DamageExpCalculator";
 
+// Inject Vercel Analytics
+if (typeof window !== 'undefined') {
+  inject();
+}
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -28,7 +33,6 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Analytics />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/damage-per-fsp" element={<FspDamage />} />
