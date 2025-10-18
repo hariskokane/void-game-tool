@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Analytics from "@vercel/analytics";
+import { Analytics } from "@vercel/analytics/react";
 import FspDamage from "@/pages/FspDamage";
 import FspNeeded from "@/pages/FspNeeded";
 import StaminaRegen from "@/pages/StaminaRegen";
@@ -28,7 +28,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Analytics.default />
+          <Analytics />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/damage-per-fsp" element={<FspDamage />} />
