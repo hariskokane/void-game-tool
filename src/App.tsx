@@ -28,7 +28,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Analytics />
+          <Analytics.default />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/damage-per-fsp" element={<FspDamage />} />
