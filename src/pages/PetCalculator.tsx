@@ -7,22 +7,24 @@ import { Button } from "@/components/ui/button";
 import { PawPrint, ArrowLeft, Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const MAX_PET_LEVEL = 100;
+
 // Experience calculation function using the quadratic formula
 const calculateExpForNextLevel = (level: number): number => {
   // Exp(L) = ⌊6.25 × (L+1)^2 + 100⌋
   return Math.floor(6.25 * Math.pow(level + 1, 2) + 100);
 };
 
-// Generate experience table using the formula (levels 0-80)
+// Generate experience table using the formula (levels 0-MAX_PET_LEVEL)
 const generateExpTable = (): number[] => {
   const table = [0]; // Level 0 requires 0 EXP
-  for (let level = 0; level < 80; level++) {
+  for (let level = 0; level < MAX_PET_LEVEL; level++) {
     table.push(calculateExpForNextLevel(level));
   }
   return table;
 };
 
-// Pet EXP requirements (levels 0-80)
+// Pet EXP requirements (levels 0-MAX_PET_LEVEL)
 const EXP_TABLE = generateExpTable();
 
 // Food types with their EXP values
@@ -57,7 +59,7 @@ const PetCalculator = () => {
     let newLevel = currentLevel;
     const calculationSteps: Array<{ level: number; expRequired: number; expRemaining: number }> = [];
 
-    // Level up while we have enough EXP and haven't reached max level (80)
+    // Level up while we have enough EXP and haven't reached max level
     while (newLevel + 1 < EXP_TABLE.length && totalExp >= EXP_TABLE[newLevel + 1]) {
       const expRequired = EXP_TABLE[newLevel + 1];
       totalExp -= expRequired;
@@ -221,14 +223,14 @@ const PetCalculator = () => {
                   Pet Level-Up Process
                 </h4>
                 <ul className="text-muted-foreground space-y-2">
-                  <li>1. Enter your current pet level (0-79)</li>
+                  <li>1. Enter your current pet level (0-{MAX_PET_LEVEL - 1})</li>
                   <li>2. Add your current EXP (optional, useful for mid-level progress)</li>
                   <li>3. Select the type of pet food you will use</li>
                   <li>4. Enter the number of pet foods you will use</li>
                   <li>5. The calculator determines how many levels you'll gain</li>
                   <li>6. Shows remaining EXP after leveling up</li>
                   <li>7. Detailed breakdown shows each level gained step-by-step</li>
-                  <li>8. Maximum pet level is 80</li>
+                  <li>8. Maximum pet level is {MAX_PET_LEVEL}</li>
                 </ul>
               </div>
               
