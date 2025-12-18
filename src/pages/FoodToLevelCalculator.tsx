@@ -7,6 +7,8 @@ import { Button } from "@/components/ui/button";
 import { PawPrint, ArrowLeft, Calculator } from "lucide-react";
 import { Link } from "react-router-dom";
 
+const MAX_PET_LEVEL = 100;
+
 // Experience calculation function using the quadratic formula
 const calculateExpForNextLevel = (level: number): number => {
   // Exp(L) = ⌊6.25 × (L+1)^2 + 100⌋
@@ -40,7 +42,7 @@ const FoodToLevelCalculator = () => {
     const current = parseInt(currentLevel) || 0;
     const target = parseInt(targetLevel) || 0;
     
-    if (target <= current || current < 0 || target > 80) {
+    if (target <= current || current < 0 || target > MAX_PET_LEVEL) {
       setResults([]);
       return;
     }
@@ -98,7 +100,7 @@ const FoodToLevelCalculator = () => {
                   label="Current Pet Level"
                   value={currentLevel}
                   onChange={setCurrentLevel}
-                  placeholder="Enter current pet level (0-79)"
+                  placeholder={`Enter current pet level (0-${MAX_PET_LEVEL - 1})`}
                   type="number"
                 />
 
@@ -106,7 +108,7 @@ const FoodToLevelCalculator = () => {
                   label="Target Pet Level"
                   value={targetLevel}
                   onChange={setTargetLevel}
-                  placeholder="Enter target pet level (0-80)"
+                  placeholder={`Enter target pet level (0-${MAX_PET_LEVEL})`}
                   type="number"
                 />
 
@@ -140,7 +142,7 @@ const FoodToLevelCalculator = () => {
                 {results !== null && results.length === 0 && (
                   <div className="bg-red-500/20 border border-red-500/30 rounded-lg p-4 text-center">
                     <p className="text-red-500 font-orbitron font-semibold">
-                      Invalid input: Target level must be higher than current level and within 0-80 range
+                      Invalid input: Target level must be higher than current level and within 0-{MAX_PET_LEVEL} range
                     </p>
                   </div>
                 )}
@@ -156,8 +158,8 @@ const FoodToLevelCalculator = () => {
                   Food Calculation Process
                 </h4>
                 <ul className="text-muted-foreground space-y-2">
-                  <li>1. Enter your current pet level (0-79)</li>
-                  <li>2. Enter your target pet level (maximum 80)</li>
+                  <li>1. Enter your current pet level (0-{MAX_PET_LEVEL - 1})</li>
+                  <li>2. Enter your target pet level (maximum {MAX_PET_LEVEL})</li>
                   <li>3. The calculator determines how much food you need of each type</li>
                   <li>4. Results show the minimum number of each food type needed</li>
                 </ul>
