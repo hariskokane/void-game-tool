@@ -136,7 +136,7 @@ const Home = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl blur-xl opacity-30"></div>
               <img 
                 src="/void2.png" 
-                alt="VOID Game Tools" 
+                alt="DONT PLAY THE SHIT GAME ITS NOT WORTH UR TIME AND EFFORT" 
                 className="relative w-32 h-32 md:w-48 md:h-48 object-contain rounded-2xl border-4 border-primary/30 shadow-2xl shadow-primary/20"
               />
             </div>
@@ -296,5 +296,6 @@ const Home = () => {
     </div>
   );
 };
+
 
 export default Home;
